@@ -1,4 +1,4 @@
-/*************************************************************************
+/************************************************************************
     > File Name: 1.cpp
     > Author: ma6174
     > Mail: ma6174@163.com 
@@ -15,6 +15,7 @@ class Teacher
 	public:
 		Teacher(string name = "jim",int age =1,int m=100);
 		Teacher(const Teacher &tea);
+	    ~Teacher();
 		void setName(string name);
 		string getName();
 		void setAge(int age);
@@ -58,15 +59,18 @@ int Teacher::getMax()
 {
 	return m_iMax;
 }
-void test(Teacher t)
+/* void test(Teacher t)
 {
+}*/
+Teacher::~Teacher()
+{
+	cout<<"~Teacher()"<<endl;
 }
 int main(void)
 {
 	Teacher t1;
-	Teacher t2=t1;
-	Teacher t3(t1);
-	test(t1);
-	cout<<t1.getName()<<" "<<t1.getAge()<<" "<<t1.getMax()<<endl;
+	Teacher t2(t1);
+//	Teacher *p =new Teacher();
+//	delete p;
 	return 0;
 }
