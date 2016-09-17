@@ -14,6 +14,7 @@ class Teacher
 {
 	public:
 		Teacher(string name = "jim",int age =1,int m=100);
+		Teacher(const Teacher &tea);
 		void setName(string name);
 		string getName();
 		void setAge(int age);
@@ -23,7 +24,7 @@ class Teacher
 	private:
 		string m_strName;
 		int m_iAge;
-		const int m_iMax;
+		int m_iMax;
 
 };
 Teacher::Teacher(string name,int age,int m):m_strName(name),m_iAge(age),m_iMax(m)
@@ -31,6 +32,10 @@ Teacher::Teacher(string name,int age,int m):m_strName(name),m_iAge(age),m_iMax(m
 //	m_strName =name;
 //	m_iAge =age;
     cout <<"Teacher(string name,int age)"<<endl;
+}
+Teacher::Teacher(const Teacher &tea)
+{
+	cout<<"Teadcher(const Teacher &tea)"<<endl;
 }
 void Teacher::setName(string name)
 {
@@ -53,9 +58,15 @@ int Teacher::getMax()
 {
 	return m_iMax;
 }
+void test(Teacher t)
+{
+}
 int main(void)
 {
-	Teacher t1("Merry",12,150);
+	Teacher t1;
+	Teacher t2=t1;
+	Teacher t3(t1);
+	test(t1);
 	cout<<t1.getName()<<" "<<t1.getAge()<<" "<<t1.getMax()<<endl;
 	return 0;
 }
